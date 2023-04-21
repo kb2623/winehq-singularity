@@ -7,11 +7,11 @@ From: ubuntu:kinetic
     Recipe https://github.com/kb2623/winehq-singularity
 
 %post
-    apt update && apt upgrade -y && apt install -y software-properties-common wget bash neovim
+    apt update && apt upgrade -y && apt install -y software-properties-common wget bash neovim lsb
     dpkg --add-architecture i386
 	 mkdir -pm755 /etc/apt/keyrings
 	 wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-	 wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/kinetic/winehq-kinetic.sources
+	 wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/$(lsb_release -cs)/winehq-$(lsb_release -cs).sources
     apt update && apt upgrade -y && apt install -y --install-recommends winehq-stable
 
 %runscript

@@ -1,2 +1,2 @@
 build:
-	singularity build winehq.5.0.0.sif winehq.5.0.0.def
+	singularity build winehq.sif winehq.def
